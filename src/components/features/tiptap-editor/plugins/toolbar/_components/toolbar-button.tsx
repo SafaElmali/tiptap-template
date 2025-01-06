@@ -11,6 +11,7 @@ type ToolbarButtonProps = {
   label: string;
   command: () => void;
   isActive: boolean;
+  disabled?: boolean;
 };
 
 const ToolbarButton: FC<ToolbarButtonProps> = ({
@@ -18,15 +19,18 @@ const ToolbarButton: FC<ToolbarButtonProps> = ({
   label,
   isActive,
   command,
+  disabled,
 }) => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Toggle
           size="sm"
+          type="button"
           pressed={isActive}
           onPressedChange={command}
           aria-label={label}
+          disabled={disabled}
         >
           {icon}
         </Toggle>

@@ -1,5 +1,5 @@
 import { type Editor } from "@tiptap/react";
-import { Bold, Italic, Quote, Underline } from "lucide-react";
+import { Bold, Italic, Quote, Redo, Underline, Undo } from "lucide-react";
 import { FC } from "react";
 import { ToolbarButton } from "./_components/toolbar-button";
 import { HeadingDropdown } from "./_components/heading-dropdown";
@@ -40,6 +40,20 @@ const Toolbar: FC<ToolbarProps> = ({ editor }) => {
           label="Toggle quote"
           command={() => editor.chain().focus().toggleBlockquote().run()}
           isActive={editor.isActive("blockquote")}
+        />
+        <ToolbarButton
+          icon={<Undo className="h-4 w-4" />}
+          label="Undo"
+          command={() => editor.chain().focus().undo().run()}
+          isActive={false}
+          disabled={!editor.can().undo()}
+        />
+        <ToolbarButton
+          icon={<Redo className="h-4 w-4" />}
+          label="Redo"
+          command={() => editor.chain().focus().redo().run()}
+          isActive={false}
+          disabled={!editor.can().redo()}
         />
         <ListDropdown editor={editor} />
         <FormattingDropdown editor={editor} />

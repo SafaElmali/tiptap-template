@@ -1,5 +1,5 @@
 import { type Editor } from "@tiptap/react";
-import { Bold, Italic, Underline } from "lucide-react";
+import { Bold, Italic, Quote, Underline } from "lucide-react";
 import { FC } from "react";
 import { ToolbarButton } from "./_components/toolbar-button";
 import { HeadingDropdown } from "./_components/heading-dropdown";
@@ -34,6 +34,12 @@ const Toolbar: FC<ToolbarProps> = ({ editor }) => {
           label="Toggle underline"
           command={() => editor.chain().focus().toggleUnderline().run()}
           isActive={editor.isActive("underline")}
+        />
+        <ToolbarButton
+          icon={<Quote className="h-4 w-4" />}
+          label="Toggle quote"
+          command={() => editor.chain().focus().toggleBlockquote().run()}
+          isActive={editor.isActive("blockquote")}
         />
         <ListDropdown editor={editor} />
         <FormattingDropdown editor={editor} />

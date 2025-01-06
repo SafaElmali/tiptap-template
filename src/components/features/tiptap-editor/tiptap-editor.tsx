@@ -24,7 +24,10 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
     content,
     editorProps: {
       attributes: {
-        class: cn("tiptap-editor", className),
+        class: cn(
+          "prose prose-sm sm:prose-base dark:prose-invert focus:outline-none max-w-full p-4 h-full min-h-[200px] prose-pre:bg-muted/50 prose-pre:rounded-md tiptap-editor",
+          className
+        ),
       },
     },
     onUpdate: ({ editor }) => {

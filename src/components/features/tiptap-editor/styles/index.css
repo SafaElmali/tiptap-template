@@ -1,0 +1,49 @@
+.tiptap-editor {
+  @apply min-h-[150px] max-h-[500px] overflow-y-auto w-full rounded-b-md border border-input border-t-0 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Add custom scrollbar styling */
+.tiptap-editor::-webkit-scrollbar {
+  @apply w-1;
+}
+
+.tiptap-editor::-webkit-scrollbar-track {
+  @apply bg-secondary rounded-r-lg;
+}
+
+.tiptap-editor::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50 transition-colors;
+}
+
+.tiptap-editor blockquote {
+  @apply border-l-4 border-muted pl-4 my-4 italic;
+}
+
+/* Tiptap heading styles */
+.tiptap-editor h1 {
+  @apply text-4xl font-bold mb-4;
+}
+
+.tiptap-editor h2 {
+  @apply text-3xl font-bold mb-3;
+}
+
+.tiptap-editor h3 {
+  @apply text-2xl font-bold mb-3;
+}
+
+.tiptap-editor h4 {
+  @apply text-xl font-bold mb-2;
+}
+
+.tiptap-editor h5 {
+  @apply text-lg font-bold mb-2;
+}
+
+.tiptap-editor h6 {
+  @apply text-base font-bold mb-2;
+}
+
+.tiptap-editor p {
+  @apply mb-2;
+}

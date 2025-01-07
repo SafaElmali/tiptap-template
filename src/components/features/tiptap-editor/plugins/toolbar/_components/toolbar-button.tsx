@@ -4,6 +4,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import { FC } from "react";
 
 type ToolbarButtonProps = {
@@ -31,6 +32,10 @@ const ToolbarButton: FC<ToolbarButtonProps> = ({
           onPressedChange={command}
           aria-label={label}
           disabled={disabled}
+          className={cn(
+            "bg-transparent hover:bg-transparent hover:text-foreground",
+            isActive && "bg-accent text-muted-foreground hover:bg-accent"
+          )}
         >
           {icon}
         </Toggle>

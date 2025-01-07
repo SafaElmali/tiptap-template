@@ -24,10 +24,7 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
     content,
     editorProps: {
       attributes: {
-        class: cn(
-          "prose prose-sm sm:prose-base dark:prose-invert focus:outline-none max-w-full p-4 h-full min-h-[200px] prose-pre:bg-muted/50 prose-pre:rounded-md tiptap-editor",
-          className
-        ),
+        class: cn(className),
       },
     },
     onUpdate: ({ editor }) => {
@@ -36,7 +33,7 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full rounded-md border bg-card text-card-foreground shadow-sm">
       <Toolbar editor={editor} />
       <EditorContent editor={editor} />
     </div>

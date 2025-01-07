@@ -14,8 +14,8 @@ const Toolbar: FC<ToolbarProps> = ({ editor }) => {
   if (!editor) return null;
 
   return (
-    <div className="border border-input bg-transparent rounded-t-md overflow-x-auto">
-      <div className="flex items-center gap-1 p-1 min-w-max">
+    <div className="bg-transparent rounded-t-md overflow-x-auto">
+      <div className="flex items-center gap-1 p-1 min-w-max border-b border-input">
         <HeadingDropdown editor={editor} />
         <ToolbarButton
           icon={<Bold className="h-4 w-4" />}

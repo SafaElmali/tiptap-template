@@ -1,11 +1,33 @@
-.tiptap-editor {
-  @apply min-h-[150px] max-h-[500px] overflow-y-auto w-full rounded-b-md border border-input border-t-0 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 transition-colors;
-}
+@import "./partial/list.css";
+@import "./partial/placeholder.css";
+@import "./partial/typography.css";
+@import "./partial/blocks.css";
 
-.tiptap-editor p {
-  @apply m-0;
-}
+.ProseMirror {
+  @apply caret-black dark:caret-white outline-0 p-4 z-0 mx-auto;
 
-.tiptap-editor li p {
-  @apply m-0;
+  .selection {
+    @apply inline;
+  }
+
+  .selection,
+  *::selection {
+    @apply bg-black/10 dark:bg-white/20 inline;
+  }
+
+  & > .react-renderer {
+    @apply my-12 first:mt-0 last:mb-0;
+  }
+
+  &.resize-cursor {
+    @apply cursor-col-resize;
+  }
+
+  .ProseMirror-gapcursor {
+    @apply relative w-full mx-auto;
+
+    &:after {
+      @apply border-t-black/40 dark:border-t-white/40 w-full -top-[1.5em] mx-auto left-0 right-0;
+    }
+  }
 }

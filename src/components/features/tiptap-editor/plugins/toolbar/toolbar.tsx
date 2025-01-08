@@ -7,6 +7,7 @@ import { FormattingDropdown } from "./_components/formatting-dropdown";
 import { ListDropdown } from "./_components/list-dropdown";
 import { TableDropdown } from "./_components/table-dropdown";
 import { TaskListDropdown } from "./_components/task-list-dropdown";
+import { LinkButton } from "../link/link-button";
 
 type ToolbarProps = {
   editor: Editor | null;
@@ -63,6 +64,7 @@ const Toolbar: FC<ToolbarProps> = ({ editor }) => {
           command={() => editor.chain().focus().setHorizontalRule().run()}
           isActive={false}
         />
+        <LinkButton editor={editor} />
         <TableDropdown editor={editor} />
         <ListDropdown editor={editor} />
         <TaskListDropdown editor={editor} />

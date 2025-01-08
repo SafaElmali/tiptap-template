@@ -11,8 +11,10 @@ import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableHeader from "@tiptap/extension-table-header";
 import TableCell from "@tiptap/extension-table-cell";
-import TaskList from '@tiptap/extension-task-list'
-import TaskItem from '@tiptap/extension-task-item'
+import TaskList from "@tiptap/extension-task-list";
+import TaskItem from "@tiptap/extension-task-item";
+import Link from "@tiptap/extension-link";
+import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
 
 type TiptapEditorProps = {
   className?: string;
@@ -37,6 +39,15 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
       TaskItem.configure({
         nested: true,
       }),
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        defaultProtocol: "https",
+        protocols: ["http", "https"],
+        HTMLAttributes: {
+          class: "text-primary underline hover:text-primary/80",
+        },
+      }),
     ],
     content,
     editorProps: {
@@ -53,6 +64,7 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
     <div className="w-full rounded-md border bg-card text-card-foreground shadow-sm">
       <Toolbar editor={editor} />
       <EditorContent editor={editor} />
+      {editor && <LinkMenu editor={editor} />}
     </div>
   );
 };

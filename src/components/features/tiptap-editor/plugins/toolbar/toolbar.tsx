@@ -5,6 +5,7 @@ import { ToolbarButton } from "./_components/toolbar-button";
 import { HeadingDropdown } from "./_components/heading-dropdown";
 import { FormattingDropdown } from "./_components/formatting-dropdown";
 import { ListDropdown } from "./_components/list-dropdown";
+import { TableDropdown } from "./_components/table-dropdown";
 
 type ToolbarProps = {
   editor: Editor | null;
@@ -61,6 +62,7 @@ const Toolbar: FC<ToolbarProps> = ({ editor }) => {
           command={() => editor.chain().focus().setHorizontalRule().run()}
           isActive={false}
         />
+        <TableDropdown editor={editor} />
         <ListDropdown editor={editor} />
         <FormattingDropdown editor={editor} />
       </div>

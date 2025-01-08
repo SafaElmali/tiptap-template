@@ -7,6 +7,10 @@ import { cn } from "@/lib/utils";
 import { FC } from "react";
 import Underline from "@tiptap/extension-underline";
 import "./styles/index.css";
+import Table from "@tiptap/extension-table";
+import TableRow from "@tiptap/extension-table-row";
+import TableHeader from "@tiptap/extension-table-header";
+import TableCell from "@tiptap/extension-table-cell";
 
 type TiptapEditorProps = {
   className?: string;
@@ -20,7 +24,14 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
   className,
 }) => {
   const editor = useEditor({
-    extensions: [StarterKit, Underline],
+    extensions: [
+      StarterKit,
+      Table,
+      TableRow,
+      TableHeader,
+      TableCell,
+      Underline,
+    ],
     content,
     editorProps: {
       attributes: {

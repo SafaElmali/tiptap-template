@@ -85,4 +85,39 @@
   blockquote {
     @apply border-l-4 border-muted pl-4 my-4 italic text-foreground;
   }
+
+  /* Table styles */
+  .tableWrapper {
+    @apply my-6 overflow-x-auto;
+  }
+
+  table {
+    @apply border-collapse m-0 overflow-hidden table-fixed w-full;
+
+    td,
+    th {
+      @apply border border-border box-border min-w-[1em] p-2 align-top relative;
+
+      > * {
+        @apply mb-0;
+      }
+    }
+
+    th {
+      @apply bg-muted font-bold text-left;
+    }
+
+    .selectedCell:after {
+      @apply bg-accent/50 absolute inset-0 pointer-events-none z-[2];
+      content: "";
+    }
+
+    .column-resize-handle {
+      @apply bg-primary absolute bottom-[-2px] pointer-events-none right-[-2px] top-0 w-1;
+    }
+  }
+
+  &.resize-cursor {
+    @apply cursor-col-resize;
+  }
 }

@@ -14,8 +14,10 @@ import TableCell from "@tiptap/extension-table-cell";
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import Link from "@tiptap/extension-link";
+import BubbleMenu from "@tiptap/extension-bubble-menu";
 import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
 import { OutputTabs } from "./_components/output-tabs";
+import { BubbleMenuBar } from "./plugins/bubble-menu/bubble-menu";
 
 type TiptapEditorProps = {
   className?: string;
@@ -51,6 +53,12 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
           class: "text-primary underline hover:text-primary/80",
         },
       }),
+      BubbleMenu.configure({
+        shouldShow: ({ editor }) => {
+          // Only show if text is selected
+          return !editor.state.selection.empty;
+        },
+      }),
     ],
     content,
     editorProps: {
@@ -70,7 +78,12 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
       <div className="rounded-md border bg-card text-card-foreground shadow-sm">
         <Toolbar editor={editor} />
         <EditorContent editor={editor} />
-        {editor && <LinkMenu editor={editor} />}
+        {editor && (
+          <>
+            <LinkMenu editor={editor} />
+            <BubbleMenuBar editor={editor} />
+          </>
+        )}
       </div>
       <OutputTabs content={editorContent} />
     </div>

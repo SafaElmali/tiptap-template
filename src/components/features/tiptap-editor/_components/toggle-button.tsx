@@ -7,20 +7,22 @@ import {
 import { cn } from "@/lib/utils";
 import { FC } from "react";
 
-type ToolbarButtonProps = {
+type ToggleButtonProps = {
   icon: React.ReactNode;
   label: string;
   command: () => void;
   isActive: boolean;
   disabled?: boolean;
+  disabledTooltip?: boolean;
 };
 
-const ToolbarButton: FC<ToolbarButtonProps> = ({
+const ToggleButton: FC<ToggleButtonProps> = ({
   icon,
   label,
   isActive,
   command,
   disabled,
+  disabledTooltip,
 }) => {
   return (
     <Tooltip>
@@ -33,18 +35,22 @@ const ToolbarButton: FC<ToolbarButtonProps> = ({
           aria-label={label}
           disabled={disabled}
           className={cn(
-            "bg-transparent hover:bg-transparent hover:text-foreground",
+            "bg-transparent hover:bg-accent hover:text-foreground",
             isActive && "bg-accent text-muted-foreground hover:bg-accent"
           )}
         >
           {icon}
         </Toggle>
       </TooltipTrigger>
-      <TooltipContent side="bottom" sideOffset={4}>
+      <TooltipContent
+        side="bottom"
+        sideOffset={4}
+        className={cn(disabledTooltip && "hidden")}
+      >
         {label}
       </TooltipContent>
     </Tooltip>
   );
 };
 
-export { ToolbarButton };
+export { ToggleButton };

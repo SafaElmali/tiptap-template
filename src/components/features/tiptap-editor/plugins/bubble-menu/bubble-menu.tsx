@@ -8,6 +8,7 @@ import {
   Strikethrough,
   Quote,
   Image,
+  Eraser,
 } from "lucide-react";
 import { LinkDialog } from "../link/_components/link-menu/link-dialog";
 import { ImageDialog } from "../image/_components/image-dialog";
@@ -83,6 +84,13 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
           label="Image"
           isActive={false}
           command={() => setIsImageDialogOpen(true)}
+          disabledTooltip
+        />
+        <ToggleButton
+          icon={<Eraser className="h-4 w-4" />}
+          label="Clear formatting"
+          isActive={false}
+          command={() => editor.chain().focus().clearNodes().unsetAllMarks().run()}
           disabledTooltip
         />
       </BubbleMenu>

@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { FC, useState } from "react";
+import { formatUrl } from "@/lib/url";
 
 type LinkDialogProps = {
   isOpen: boolean;
@@ -41,7 +42,8 @@ export const LinkDialog: FC<LinkDialogProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSetLink(url, openInNewTab);
+    const formattedUrl = formatUrl(url);
+    onSetLink(formattedUrl, openInNewTab);
   };
 
   return (

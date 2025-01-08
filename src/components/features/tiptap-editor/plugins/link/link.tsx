@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { type Editor } from "@tiptap/react";
-import { Link } from "lucide-react";
+import { Link as LinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LinkDialog } from "./_components/link-menu/link-dialog";
@@ -24,7 +24,7 @@ export const LinkButton: FC<LinkButtonProps> = ({ editor }) => {
         )}
         onClick={() => setIsDialogOpen(true)}
       >
-        <Link className="h-4 w-4" />
+        <LinkIcon className="h-4 w-4" />
       </Button>
 
       <LinkDialog

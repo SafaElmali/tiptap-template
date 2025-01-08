@@ -11,6 +11,8 @@ import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableHeader from "@tiptap/extension-table-header";
 import TableCell from "@tiptap/extension-table-cell";
+import TaskList from '@tiptap/extension-task-list'
+import TaskItem from '@tiptap/extension-task-item'
 
 type TiptapEditorProps = {
   className?: string;
@@ -31,6 +33,10 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
       TableHeader,
       TableCell,
       Underline,
+      TaskList,
+      TaskItem.configure({
+        nested: true,
+      }),
     ],
     content,
     editorProps: {

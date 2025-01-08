@@ -120,4 +120,53 @@
   &.resize-cursor {
     @apply cursor-col-resize;
   }
+
+  /* Basic list styles */
+  ul,
+  ol {
+    @apply px-4 my-5 ml-1;
+
+    li p {
+      @apply mt-1 mb-1;
+    }
+  }
+
+  /* Task list styles */
+  ul[data-type="taskList"] {
+    @apply list-none m-0 p-0;
+
+    li {
+      @apply flex items-center gap-0 py-0.5;
+
+      > label {
+        @apply flex items-center select-none;
+      }
+
+      > div {
+        @apply flex-auto py-[3px];
+
+        p {
+          @apply m-0;
+        }
+      }
+
+      input[type="checkbox"] {
+        @apply cursor-pointer h-4 w-4 mt-0;
+      }
+    }
+
+    /* Nested task lists */
+    ul[data-type="taskList"] {
+      @apply m-0 pl-6;
+    }
+
+    /* First and last items */
+    > li:first-child {
+      @apply mt-0;
+    }
+
+    > li:last-child {
+      @apply mb-0;
+    }
+  }
 }

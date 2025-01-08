@@ -6,6 +6,7 @@ import { HeadingDropdown } from "./_components/heading-dropdown";
 import { FormattingDropdown } from "./_components/formatting-dropdown";
 import { ListDropdown } from "./_components/list-dropdown";
 import { TableDropdown } from "./_components/table-dropdown";
+import { TaskListDropdown } from "./_components/task-list-dropdown";
 
 type ToolbarProps = {
   editor: Editor | null;
@@ -64,6 +65,7 @@ const Toolbar: FC<ToolbarProps> = ({ editor }) => {
         />
         <TableDropdown editor={editor} />
         <ListDropdown editor={editor} />
+        <TaskListDropdown editor={editor} />
         <FormattingDropdown editor={editor} />
       </div>
     </div>

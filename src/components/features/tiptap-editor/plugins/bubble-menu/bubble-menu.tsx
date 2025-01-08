@@ -90,7 +90,9 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
           icon={<Eraser className="h-4 w-4" />}
           label="Clear formatting"
           isActive={false}
-          command={() => editor.chain().focus().clearNodes().unsetAllMarks().run()}
+          command={() =>
+            editor.chain().focus().clearNodes().unsetAllMarks().run()
+          }
           disabledTooltip
         />
       </BubbleMenu>

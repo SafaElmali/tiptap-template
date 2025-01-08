@@ -16,6 +16,8 @@ import TaskItem from "@tiptap/extension-task-item";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
+import TextStyle from "@tiptap/extension-text-style";
+import Color from "@tiptap/extension-color";
 import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
 import { OutputTabs } from "./_components/output-tabs";
 import { BubbleMenuBar } from "./plugins/bubble-menu/bubble-menu";
@@ -55,6 +57,8 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
         },
       }),
       Image,
+      TextStyle,
+      Color,
       BubbleMenu.configure({
         shouldShow: ({ editor }) => {
           // Only show if text is selected

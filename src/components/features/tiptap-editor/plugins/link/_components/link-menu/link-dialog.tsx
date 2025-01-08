@@ -7,6 +7,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { FC, useState } from "react";
 import { formatUrl } from "@/lib/url";
 
@@ -60,6 +61,19 @@ export const LinkDialog: FC<LinkDialogProps> = ({
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Enter URL"
+            />
+          </div>
+          <div className="flex items-center space-x-2">
+            <Label
+              htmlFor="open-in-new-tab"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Open in new tab
+            </Label>
+            <Switch
+              id="open-in-new-tab"
+              checked={openInNewTab}
+              onCheckedChange={setOpenInNewTab}
             />
           </div>
           <div className="flex justify-end gap-2">

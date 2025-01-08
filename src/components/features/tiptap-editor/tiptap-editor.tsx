@@ -15,7 +15,7 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import Link from "@tiptap/extension-link";
 import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { OutputTabs } from "./_components/output-tabs";
 
 type TiptapEditorProps = {
   className?: string;
@@ -28,7 +28,6 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
   onChange,
   className,
 }) => {
-  const [currentTab, setCurrentTab] = useState<string>("editor");
   const [editorContent, setEditorContent] = useState(content);
 
   const editor = useEditor({
@@ -73,26 +72,7 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
         <EditorContent editor={editor} />
         {editor && <LinkMenu editor={editor} />}
       </div>
-
-      <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="html">HTML Output</TabsTrigger>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-        </TabsList>
-        <TabsContent value="html" className="mt-2">
-          <div className="rounded-md border bg-muted p-4">
-            <pre className="whitespace-pre-wrap break-all text-sm">
-              {editorContent}
-            </pre>
-          </div>
-        </TabsContent>
-        <TabsContent value="preview" className="mt-2">
-          <div
-            className="prose dark:prose-invert max-w-none rounded-md border bg-card p-4"
-            dangerouslySetInnerHTML={{ __html: editorContent }}
-          />
-        </TabsContent>
-      </Tabs>
+      <OutputTabs content={editorContent} />
     </div>
   );
 };

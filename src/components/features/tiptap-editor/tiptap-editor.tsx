@@ -14,6 +14,7 @@ import TableCell from "@tiptap/extension-table-cell";
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import Link from "@tiptap/extension-link";
+import Image from "@tiptap/extension-image";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
 import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
 import { OutputTabs } from "./_components/output-tabs";
@@ -53,6 +54,7 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
           class: "text-primary underline hover:text-primary/80",
         },
       }),
+      Image,
       BubbleMenu.configure({
         shouldShow: ({ editor }) => {
           // Only show if text is selected

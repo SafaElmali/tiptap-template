@@ -1,7 +1,16 @@
 import { BubbleMenu, type Editor } from "@tiptap/react";
 import { FC } from "react";
-import { Bold, Italic, Underline, Code, Strikethrough, Quote } from "lucide-react";
+import {
+  Bold,
+  Italic,
+  Underline,
+  Code,
+  Strikethrough,
+  Quote,
+  Image,
+} from "lucide-react";
 import { LinkDialog } from "../link/_components/link-menu/link-dialog";
+import { ImageDialog } from "../image/_components/image-dialog";
 import { useState } from "react";
 import { ToggleButton } from "../../_components/toggle-button";
 
@@ -11,6 +20,7 @@ type BubbleMenuBarProps = {
 
 export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
   const [isLinkDialogOpen, setIsLinkDialogOpen] = useState(false);
+  const [isImageDialogOpen, setIsImageDialogOpen] = useState(false);
 
   return (
     <>
@@ -18,6 +28,13 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
         className="flex items-center gap-1 rounded-md border bg-white p-2 shadow-md dark:bg-card"
         tippyOptions={{ duration: 100 }}
         editor={editor}
+        shouldShow={({ state }) => {
+          const { selection } = state;
+          const { empty } = selection;
+
+          // Only show if text is selected and dialog is not open
+          return !empty && !isLinkDialogOpen && !isImageDialogOpen;
+        }}
       >
         <ToggleButton
           icon={<Bold className="h-4 w-4" />}
@@ -61,7 +78,15 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
           command={() => editor.chain().focus().toggleBlockquote().run()}
           disabledTooltip
         />
+        <ToggleButton
+          icon={<Image className="h-4 w-4" />}
+          label="Image"
+          isActive={false}
+          command={() => setIsImageDialogOpen(true)}
+          disabledTooltip
+        />
       </BubbleMenu>
+
       <LinkDialog
         isOpen={isLinkDialogOpen}
         onClose={() => setIsLinkDialogOpen(false)}
@@ -81,6 +106,14 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
         initialUrl={editor.getAttributes("link").href}
         initialOpenInNewTab={editor.getAttributes("link").target === "_blank"}
         isEditing={editor.isActive("link")}
+      />
+
+      <ImageDialog
+        isOpen={isImageDialogOpen}
+        onClose={() => setIsImageDialogOpen(false)}
+        onUploadComplete={(url) => {
+          editor.chain().focus().setImage({ src: url }).run();
+        }}
       />
     </>
   );

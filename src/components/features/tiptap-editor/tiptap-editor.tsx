@@ -18,6 +18,7 @@ import Image from "@tiptap/extension-image";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
+import TextAlign from "@tiptap/extension-text-align";
 import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
 import { OutputTabs } from "./_components/output-tabs";
 import { BubbleMenuBar } from "./plugins/bubble-menu/bubble-menu";
@@ -59,6 +60,11 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
       Image,
       TextStyle,
       Color,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+        alignments: ["left", "center", "right", "justify"],
+        defaultAlignment: "left",
+      }),
       BubbleMenu.configure({
         shouldShow: ({ editor }) => {
           // Only show if text is selected

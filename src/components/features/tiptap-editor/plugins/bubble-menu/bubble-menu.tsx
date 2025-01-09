@@ -27,7 +27,11 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
     <>
       <BubbleMenu
         className="flex items-center gap-1 rounded-md border bg-white p-2 shadow-md dark:bg-card"
-        tippyOptions={{ duration: 100 }}
+        tippyOptions={{
+          duration: 100,
+          placement: "top",
+          offset: [0, 8],
+        }}
         editor={editor}
         shouldShow={({ state }) => {
           const { selection } = state;

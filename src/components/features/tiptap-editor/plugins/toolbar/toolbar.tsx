@@ -14,7 +14,7 @@ import { FormattingDropdown } from "./_components/formatting-dropdown";
 import { ListDropdown } from "./_components/list-dropdown";
 import { TableDropdown } from "./_components/table-dropdown";
 import { TaskListDropdown } from "./_components/task-list-dropdown";
-import { ColorDropdown } from "./_components/color-dropdown";
+import { ColorDropdown } from "../../_components/color-picker/color-dropdown";
 import { LinkButton } from "../link/link";
 import { ImageButton } from "./_components/image-button";
 import { ToggleButton } from "../../_components/toggle-button";

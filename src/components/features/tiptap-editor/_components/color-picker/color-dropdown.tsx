@@ -45,9 +45,8 @@ export const ColorDropdown: FC<ColorDropdownProps> = ({ editor }) => {
               editor.chain().focus().setColor(color).run();
             }
           }}
-          onClear={() => editor.chain().focus().unsetColor().run()}
         />
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}; 
+};

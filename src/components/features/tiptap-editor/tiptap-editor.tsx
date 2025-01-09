@@ -19,6 +19,7 @@ import BubbleMenu from "@tiptap/extension-bubble-menu";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import TextAlign from "@tiptap/extension-text-align";
+import Dropcursor from "@tiptap/extension-dropcursor";
 import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
 import { OutputTabs } from "./_components/output-tabs";
 import { BubbleMenuBar } from "./plugins/bubble-menu/bubble-menu";
@@ -70,6 +71,10 @@ const TiptapEditor: FC<TiptapEditorProps> = ({
           // Only show if text is selected
           return !editor.state.selection.empty;
         },
+      }),
+      Dropcursor.configure({
+        color: "var(--primary)",
+        width: 2,
       }),
     ],
     content,

@@ -11,7 +11,6 @@ import {
   Eraser,
 } from "lucide-react";
 import { LinkDialog } from "../link/_components/link-menu/link-dialog";
-import { ImageDialog } from "../image/_components/image-dialog";
 import { useState } from "react";
 import { ToggleButton } from "../../_components/toggle-button";
 
@@ -21,7 +20,6 @@ type BubbleMenuBarProps = {
 
 export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
   const [isLinkDialogOpen, setIsLinkDialogOpen] = useState(false);
-  const [isImageDialogOpen, setIsImageDialogOpen] = useState(false);
 
   return (
     <>
@@ -38,7 +36,7 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
           const { empty } = selection;
 
           // Only show if text is selected and dialog is not open
-          return !empty && !isLinkDialogOpen && !isImageDialogOpen;
+          return !empty && !isLinkDialogOpen;
         }}
       >
         <ToggleButton
@@ -84,13 +82,6 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
           disabledTooltip
         />
         <ToggleButton
-          icon={<Image className="h-4 w-4" />}
-          label="Image"
-          isActive={false}
-          command={() => setIsImageDialogOpen(true)}
-          disabledTooltip
-        />
-        <ToggleButton
           icon={<Eraser className="h-4 w-4" />}
           label="Clear formatting"
           isActive={false}
@@ -120,14 +111,6 @@ export const BubbleMenuBar: FC<BubbleMenuBarProps> = ({ editor }) => {
         initialUrl={editor.getAttributes("link").href}
         initialOpenInNewTab={editor.getAttributes("link").target === "_blank"}
         isEditing={editor.isActive("link")}
-      />
-
-      <ImageDialog
-        isOpen={isImageDialogOpen}
-        onClose={() => setIsImageDialogOpen(false)}
-        onUploadComplete={(url) => {
-          editor.chain().focus().setImage({ src: url }).run();
-        }}
       />
     </>
   );

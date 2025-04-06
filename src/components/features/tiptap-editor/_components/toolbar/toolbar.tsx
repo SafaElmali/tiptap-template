@@ -17,7 +17,6 @@ import { TaskListDropdown } from "./_components/task-list-dropdown";
 import { ColorDropdown } from "../../_components/color-picker/color-dropdown";
 import { AlignmentDropdown } from "./_components/alignment-dropdown";
 import { LinkButton } from "../link/link";
-import { ImageButton } from "./_components/image-button";
 import { ToggleButton } from "../../_components/toggle-button";
 
 type ToolbarProps = {
@@ -75,7 +74,6 @@ const Toolbar: FC<ToolbarProps> = ({ editor }) => {
           command={() => editor.chain().focus().setHorizontalRule().run()}
           isActive={false}
         />
-        <ImageButton editor={editor} />
         <LinkButton editor={editor} />
         <ColorDropdown editor={editor} />
         <AlignmentDropdown editor={editor} />

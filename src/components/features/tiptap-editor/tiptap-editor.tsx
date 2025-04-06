@@ -2,7 +2,6 @@
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { Toolbar } from "./plugins/toolbar/toolbar";
 import { cn } from "@/lib/utils";
 import { FC, useState } from "react";
 import Underline from "@tiptap/extension-underline";
@@ -20,9 +19,10 @@ import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import TextAlign from "@tiptap/extension-text-align";
 import Dropcursor from "@tiptap/extension-dropcursor";
-import { LinkMenu } from "./plugins/link/_components/link-menu/link-menu";
+import { LinkMenu } from "./_components/link/_components/link-menu/link-menu";
 import { OutputTabs } from "./_components/output-tabs";
-import { BubbleMenuBar } from "./plugins/bubble-menu/bubble-menu";
+import { BubbleMenuBar } from "./_components/bubble-menu/bubble-menu";
+import { Toolbar } from "./_components/toolbar/toolbar";
 
 type TiptapEditorProps = {
   className?: string;

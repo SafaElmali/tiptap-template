@@ -7,7 +7,6 @@ import {
   Code,
   Strikethrough,
   Quote,
-  Image,
   Eraser,
 } from "lucide-react";
 import { LinkDialog } from "../link/_components/link-menu/link-dialog";
